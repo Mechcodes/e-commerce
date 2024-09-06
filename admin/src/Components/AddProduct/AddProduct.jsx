@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './AddProduct.css'
 import upload_area from '../../assets/upload_area.svg'
-
+import { url } from '../../../../urlconfig';
 
 
 const AddProduct = () => {
@@ -25,13 +25,7 @@ const AddProduct = () => {
     setproductDetails({...productDetails,[e.target.name]:e.target.value});
   }
 
-  // {
-  //   "name":"Test Product 11",
-  //   "image":"http://localhost:4000/images/product_1725191083025.jpeg",
-  //   "category":"Kid",
-  //   "new_price":"130",
-  //   "old_price":"110"
-  //   }
+ 
 
   const addProduct =  async () =>{
     console.log(productDetails);
@@ -41,7 +35,7 @@ const AddProduct = () => {
     let formData = new FormData();
     formData.append("product",image);
    
-    await fetch('http://localhost:4000/upload',{
+    await fetch(url+'/upload',{
       method:'POST',
       headers:{
         Accept:'applicaton/json',
@@ -53,7 +47,7 @@ const AddProduct = () => {
     if(responseData.success){
       product.image = responseData.image_url;
       console.log(product);
-      await fetch('http://localhost:4000/addproduct',{
+      await fetch(url+'/addproduct',{
         method:'POST',
         headers:{
           Accept:'application/json',

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./ListProduct.css";
 import cross_icon from "../../assets/cross_icon.png";
+import { url } from "../../../../urlconfig";
 
 export const ListProduct = () => {
   const [allproducts, setAllProducts] = useState([]);
 
   const fetchData = async () => {
-    await fetch("http://localhost:4000/allproduct")
+    await fetch(url+"/allproduct")
       .then((res) => res.json())
       .then((data) => {
         setAllProducts(data);
@@ -19,7 +20,7 @@ export const ListProduct = () => {
   }, []);
 
   const removeProduct = async (id) => {
-    await fetch("http://localhost:4000/removeproduct",
+    await fetch(url+"/removeproduct",
     {
       method: "POST",
       headers: {
