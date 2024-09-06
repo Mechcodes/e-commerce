@@ -1,6 +1,7 @@
 const port = process.env.PORT || 4000;
 const express = require('express')
 const app = express();
+require('dotenv').config();
 const mongoose = require("mongoose"); //use mongodb database 
 const jwt = require("jsonwebtoken"); // generate token and verify 
 const multer = require("multer"); // create image storage system
@@ -14,8 +15,9 @@ app.use(cors());
 
 // connection with database
 
-mongoose.connect("mongodb+srv://Mechcodes:Raudra_rtr24@cluster0.4g5cm.mongodb.net/e-commerce");
-
+mongoose.connect(process.env.MONGODB_URI);
+// console.log(process.env.MONGODB_URI); 
+console.log(process.env.JWT_SECRET);
 //API creation 
 
 app.get("/",(req,res)=>{
@@ -180,7 +182,7 @@ const fetchUser = async(req,res,next)=>{
         res.status(401).send({error:"Please authenticate using valid token"})
     }else{
         try {
-            const data = jwt.verify(token,'secret_ecom');
+            const data = jwt.verify(token,process.env.JWT_SECRET);
             req.user=data.user;
             next();
         } catch (error) {
@@ -274,7 +276,7 @@ app.post("/signup",async (req,res)=>{
             }
         }
 
-        const token = jwt.sign(data,'secret_ecom');
+        const token = jwt.sign(data,process.env.JWT_SECRET);
         
         res.json({
             success:true,
@@ -296,7 +298,7 @@ app.post("/login",async(req,res)=>{
                 id:user.id
             }   
         }
-        const token = jwt.sign(data,'secret_ecom');
+        const token = jwt.sign(data,process.env.JWT_SECRET);
         res.json({success:true,token});
     }else{
         res.json({sccess:false,errors:"Wrong Password"});
