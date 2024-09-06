@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './Popular.css'
 // import data_product from '../Assets/data'
 import Item from '../Item/Item'
-import { url } from '../../../../urlconfig';
+import { url } from '../../urlconfig';
 const Popular = () => {
 
   const [popular,setPopular] = useState([]);

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './AddProduct.css'
 import upload_area from '../../assets/upload_area.svg'
-import { url } from '../../../../urlconfig';
+import { url } from '../../urlconfig';
 
 
 const AddProduct = () => {

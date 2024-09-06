@@ -3,7 +3,7 @@ import './NewCollections.css'
 // import new_collection from '../Assets/new_collections'
 import Item from '../Item/Item'
 
-import { url } from '../../../../urlconfig'
+import { url } from '../../urlconfig'
 const NewCollections = () => {
 
   const [newCollection,setNewCollection] = useState([]);

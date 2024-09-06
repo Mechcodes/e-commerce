@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './Css/LoginSignup.css'
-import { url } from '../../../urlconfig';
+import { url } from '../urlconfig'
 const LoginSignup = () => {
 
   const[state,setState] = useState("Login");

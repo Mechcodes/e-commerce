@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./ListProduct.css";
 import cross_icon from "../../assets/cross_icon.png";
-import { url } from "../../../../urlconfig";
+import { url } from "../../urlconfig";
 
 export const ListProduct = () => {
   const [allproducts, setAllProducts] = useState([]);

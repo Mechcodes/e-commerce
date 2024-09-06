@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 // import all_product from '../components/Assets/all_product';
-import { url } from "../../../urlconfig";
+import { url } from "../urlconfig";
 export const ShopContext = createContext(null);
 
 const getDefaultCart =()=>{
